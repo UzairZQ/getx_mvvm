@@ -1,6 +1,6 @@
 class AppExceptions implements Exception {
-  final _message;
-  final _prefix;
+  final dynamic _message;
+  final dynamic _prefix;
 
   AppExceptions([this._prefix, this._message]);
 
