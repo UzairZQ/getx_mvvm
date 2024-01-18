@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:getx_mvvm/res/route_names.dart';
+import 'package:getx_mvvm/res/navigation/route_names.dart';
 import 'package:getx_mvvm/view/splash_screen.dart';
 
 class AppRoutes {

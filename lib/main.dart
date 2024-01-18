@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:getx_mvvm/res/routes.dart';
+import 'package:getx_mvvm/res/getx_localization/languages.dart';
+import 'package:getx_mvvm/res/navigation/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'GETX MVVM',
+      locale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
+      translations: Languages(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
