@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getx_mvvm/data/exceptions.dart';
+import 'package:getx_mvvm/res/components/internet_exception_widget.dart';
+import 'package:getx_mvvm/res/components/round_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,6 +18,14 @@ class _SplashScreenState extends State<SplashScreen> {
       floatingActionButton: FloatingActionButton(onPressed: () {
         throw InternetException();
       }),
+      body: Column(
+        children: [
+          InternetExceptionWidget(
+            onPress: () {},
+          ),
+          RoundButton(onPress: () {}, title: 'Login')
+        ],
+      ),
     );
   }
 }
