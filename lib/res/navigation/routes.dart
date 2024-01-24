@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
+import 'package:getx_mvvm/view/login_screen.dart';
 import 'package:getx_mvvm/view/splash_screen.dart';
 
 class AppRoutes {
@@ -7,11 +8,10 @@ class AppRoutes {
         GetPage(
             name: RouteName.splashScreen,
             page: () => const SplashScreen(),
-            transition: Transition.leftToRightWithFade)
+            transition: Transition.leftToRightWithFade),
+        GetPage(
+            name: RouteName.loginScreen,
+            page: () => const LoginScreen(),
+            transition: Transition.leftToRightWithFade),
       ];
-  //       GetPage(
-  //       name: RouteName.loginScreen,
-  //       page: () => const LoginScreen(),
-  //       transition: Transition.leftToRightWithFade),
-  // ];
 }
