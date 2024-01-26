@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:getx_mvvm/data/repository/login_repository/login_repository.dart';
 import 'package:getx_mvvm/res/components/round_button.dart';
-import 'package:getx_mvvm/view_models/login_controller/login_controller.dart';
+import 'package:getx_mvvm/view_models/login_view_model/login_view_model.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   LoginVM loginVM = Get.put(LoginVM());
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              
               controller: loginVM.emailController.value,
               focusNode: loginVM.emaiNode.value,
               validator: (value) {
@@ -58,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                 hintText: 'password_hint'.tr,
                 border: OutlineInputBorder(
-                  
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
@@ -66,7 +67,17 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 30,
             ),
-            RoundButton(onPress: () {}, title: 'Login')
+            Obx(() {
+              return RoundButton(
+                onPress: () {
+                  if (formKey.currentState!.validate()) {
+                    loginVM.loginApi();
+                  }
+                },
+                title: 'Login',
+                loading: loginVM.loading.value,
+              );
+            })
           ],
         ),
       ),
