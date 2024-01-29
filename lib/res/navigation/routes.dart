@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
+import 'package:getx_mvvm/view/home_screen.dart';
 import 'package:getx_mvvm/view/login_screen.dart';
 import 'package:getx_mvvm/view/splash_screen.dart';
 
@@ -12,6 +13,10 @@ class AppRoutes {
         GetPage(
             name: RouteName.loginScreen,
             page: () => const LoginScreen(),
+            transition: Transition.leftToRightWithFade),
+        GetPage(
+            name: RouteName.homeScreen,
+            page: () => const HomeScreen(),
             transition: Transition.leftToRightWithFade),
       ];
 }
