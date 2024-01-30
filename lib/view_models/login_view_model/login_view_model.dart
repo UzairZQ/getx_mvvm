@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_mvvm/data/repository/login_repository/login_repository.dart';
+import 'package:getx_mvvm/data/repository/login/login_repository.dart';
 import 'package:getx_mvvm/model/login/user_model.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
 import 'package:getx_mvvm/utils/utils.dart';

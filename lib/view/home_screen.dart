@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_mvvm/data/response/status.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
+import 'package:getx_mvvm/view_models/home_view_model/home_controller.dart';
 import 'package:getx_mvvm/view_models/login_view_model/user_prefrences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,6 +14,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   UserPrefrences userPrefrences = UserPrefrences();
+  HomeController homeController = Get.put(HomeController());
+  @override
+  void initState() {
+    homeController.userListApi();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +35,31 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.logout))
         ],
       ),
+      body: Obx(() {
+        switch (homeController.rxRequestStatus.value) {
+          case Status.LOADING:
+            return Center(child: CircularProgressIndicator());
+          case Status.ERROR:
+            return Center(
+              child: Text('An Error Occured'),
+            );
+
+          case Status.COMPLETED:
+            return ListView.builder(
+                itemCount: homeController.userList.value.data!.length,
+                itemBuilder: (context, index) {
+                  final userData = homeController.userList.value.data![index];
+                  return Card(
+                    child: ListTile(
+                      title: Text(userData.firstName.toString()),
+                      subtitle: Text(userData.email.toString()),
+                      leading: CircleAvatar(
+                          backgroundImage: NetworkImage(userData.avatar!)),
+                    ),
+                  );
+                });
+        }
+      }),
     );
   }
 }

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:getx_mvvm/data/repository/login_repository/login_repository.dart';
+
 import 'package:getx_mvvm/res/components/round_button.dart';
 import 'package:getx_mvvm/view_models/login_view_model/login_view_model.dart';
-import 'package:getx_mvvm/view_models/login_view_model/user_prefrences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
