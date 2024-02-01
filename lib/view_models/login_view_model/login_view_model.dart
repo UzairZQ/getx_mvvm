@@ -25,10 +25,11 @@ class LoginVM extends GetxController {
 
     _api.loginApi(data).then((value) {
       loading.value = false;
-
       Utils.showToastMessage('Logged In Successfully');
       UserModel userModel = UserModel(token: value['token'], isLogin: true);
       userPrefrences.saveUser(userModel);
+      Get.delete<LoginVM>();
+
       Get.toNamed(RouteName.homeScreen);
     }).onError((error, stackTrace) {
       loading.value = false;

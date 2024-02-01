@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
-import 'package:getx_mvvm/view/home_screen.dart';
-import 'package:getx_mvvm/view/login_screen.dart';
-import 'package:getx_mvvm/view/splash_screen.dart';
+import 'package:getx_mvvm/view/home/home_screen.dart';
+import 'package:getx_mvvm/view/login/login_screen.dart';
+import 'package:getx_mvvm/view/splash/splash_screen.dart';
 
 class AppRoutes {
   static appRoutes() => [

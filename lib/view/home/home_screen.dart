@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_mvvm/data/response/status.dart';
+import 'package:getx_mvvm/res/components/general_exception.dart';
+import 'package:getx_mvvm/res/components/internet_exception_widget.dart';
 import 'package:getx_mvvm/res/navigation/route_names.dart';
 import 'package:getx_mvvm/view_models/home_view_model/home_controller.dart';
 import 'package:getx_mvvm/view_models/login_view_model/user_prefrences.dart';
@@ -40,10 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
           case Status.LOADING:
             return Center(child: CircularProgressIndicator());
           case Status.ERROR:
-            return Center(
-              child: Text('An Error Occured'),
-            );
-
+            if (homeController.error.value == 'No internet') {
+              return InternetExceptionWidget(onPress: () {
+                homeController.userListApi();
+              });
+            } else {
+              return GeneralExceptionWidget();
+            }
           case Status.COMPLETED:
             return ListView.builder(
                 itemCount: homeController.userList.value.data!.length,
